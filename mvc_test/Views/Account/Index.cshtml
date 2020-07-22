@@ -1,0 +1,24 @@
+﻿@{ 
+    Layout = "_Layout";
+}
+@model mvc_test.Models.Users.DisplayUsersViewModel
+
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Operations</th>
+        </tr>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>
+                    <a asp-action="AssignClaims" asp-route-userId="@user.Id" class="btn btn-secondary">
+                        Assign Claims
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>

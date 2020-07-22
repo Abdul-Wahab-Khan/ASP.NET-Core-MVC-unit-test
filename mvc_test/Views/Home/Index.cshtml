@@ -1,0 +1,32 @@
+﻿@model mvc_test.Models.DisplayComputerViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+    <div class="text-center">
+        <h1 class="display-4">All Computers</h1>
+        <table class="table table-success">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Operations</td>
+            </tr>
+
+            @foreach (var computer in Model.Computers)
+            {
+                <tr>
+                    <td>@computer.Id</td>
+                    <td>@computer.Name</td>
+                    <td>@computer.Price</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@computer.Id">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@computer.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+<a class="btn btn-secondary" asp-action="Create">Add Computer</a>

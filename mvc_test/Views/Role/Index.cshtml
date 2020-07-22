@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model mvc_test.Models.Roles.DisplayRolesViewModel
+
+@{
+    ViewData["Title"] = "All Roles";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All Computers</h1>
+    <table class="table table-success">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Operations</td>
+        </tr>
+
+        @foreach (var role in Model.Roles)
+        {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="AssignUser" asp-route-id="@role.Id">Add User</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@role.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@role.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+<a class="btn btn-secondary" asp-action="Create">Add Role</a>

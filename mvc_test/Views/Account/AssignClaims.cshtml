@@ -1,0 +1,25 @@
+﻿@model mvc_test.Models.Claims.UserClaimViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<form action="" method="post">
+    <input type="hidden" asp-for="UserId" class="form-control" />
+    <div class="form-group">
+        <label asp-for="Claim"></label>
+        <select asp-for="Claim" class="form-control" asp-items="@(new SelectList(Model.Claims))">
+            <option>Select Claim</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-secondary" />
+    </div>
+</form>
+
+<div class="alert-light">
+    @foreach (var claim in Model.AssignedClaims)
+    {
+        <h3>@claim</h3>
+    }
+</div>
